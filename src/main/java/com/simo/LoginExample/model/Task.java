@@ -1,6 +1,8 @@
 package com.simo.LoginExample.model;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,7 +16,7 @@ public class Task {
     private String title;
     private String description;
     private boolean completed;
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -23,7 +25,7 @@ public class Task {
     public Task() {
     }
 
-    public Task(String title, String description, boolean completed, LocalDateTime dueDate, User user) {
+    public Task(String title, String description, boolean completed, LocalDate dueDate, User user) {
         this.title = title;
         this.description = description;
         this.completed = completed;
@@ -64,11 +66,11 @@ public class Task {
         this.completed = completed;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 

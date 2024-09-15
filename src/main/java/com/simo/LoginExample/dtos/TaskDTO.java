@@ -2,6 +2,8 @@ package com.simo.LoginExample.dtos;
 
 
 import com.simo.LoginExample.model.Task;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class TaskDTO {
@@ -10,7 +12,7 @@ public class TaskDTO {
     private String title;
     private String description;
     private boolean completed;
-    private LocalDateTime dueDate;
+    private LocalDate dueDate;
     private UserDTO user;
 
     // Constructor
@@ -56,11 +58,11 @@ public class TaskDTO {
         this.completed = completed;
     }
 
-    public LocalDateTime getDueDate() {
+    public LocalDate getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDateTime dueDate) {
+    public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
 
