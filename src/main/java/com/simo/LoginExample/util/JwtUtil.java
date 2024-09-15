@@ -1,6 +1,5 @@
 package com.simo.LoginExample.util;
 
-
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -9,6 +8,8 @@ import io.jsonwebtoken.Claims;
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
+import org.springframework.security.core.userdetails.UserDetails;
+
 @Component
 public class JwtUtil {
 
@@ -48,8 +49,8 @@ public class JwtUtil {
                 .compact();
     }
 
-    public Boolean validateToken(String token, String username) {
-        final String tokenUsername = extractUsername(token);
-        return (tokenUsername.equals(username) && !isTokenExpired(token));
+    public Boolean validateToken(String token, UserDetails userDetails) {
+        final String username = extractUsername(token);
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
