@@ -4,7 +4,7 @@ package com.simo.LoginExample.dtos;
 import com.simo.LoginExample.model.Task;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 public class TaskDTO {
 
