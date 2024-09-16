@@ -56,4 +56,11 @@ public class TaskService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);  // Delete task by ID
     }
+    public TaskDTO getTaskById(Long id) {
+        Task task = taskRepository.findById(id).orElse(null);
+        if (task != null) {
+            return new TaskDTO(task);  // Return the DTO if task is found
+        }
+        return null;  // Return null if task not found
+    }
 }

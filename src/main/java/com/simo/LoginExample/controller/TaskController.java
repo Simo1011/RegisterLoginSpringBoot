@@ -5,6 +5,8 @@ import com.simo.LoginExample.dtos.TaskDTO;
 import com.simo.LoginExample.model.Task;
 import com.simo.LoginExample.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,5 +55,14 @@ public class TaskController {
     @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable Long id) {
         taskService.deleteTask(id);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<TaskDTO> getTaskById(@PathVariable Long id) {
+        TaskDTO taskDTO = taskService.getTaskById(id);
+        if (taskDTO != null) {
+            return ResponseEntity.ok(taskDTO);  // Return task if found
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // Return 404 if not found
+        }
     }
 }
